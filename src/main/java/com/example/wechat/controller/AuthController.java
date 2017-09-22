@@ -61,7 +61,15 @@ public class AuthController {
     }
 
 
-
+    /**
+     * 创建微信菜单
+     * @return
+     */
+    @RequestMapping(value = "/createMenu", method = RequestMethod.POST)
+    @ResponseBody
+    public String createMenu() {
+        return wechatService.createMenu();
+    }
 
 
 }

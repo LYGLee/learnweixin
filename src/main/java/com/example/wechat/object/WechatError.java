@@ -22,4 +22,12 @@ public class WechatError {
     public void setErrmsg(String errmsg) {
         this.errmsg = errmsg;
     }
+
+    @Override
+    public String toString() {
+        return "WechatError{" +
+                "errcode=" + errcode +
+                ", errmsg='" + errmsg + '\'' +
+                '}';
+    }
 }

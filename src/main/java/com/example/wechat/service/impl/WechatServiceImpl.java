@@ -108,41 +108,36 @@ public class WechatServiceImpl implements WechatService {
         menu.setType("click");
         menu.setKey("V1001_TODAY_MUSIC");
         button.add(menu);
+        
         //一级菜单
         Menu menu2 = new Menu();
         menu2.setName("菜单");
-        menu2.setType("click");
-        menu2.setKey("V1001_TODAY_MUSIC");
-        List<Menu> subMenuList = new ArrayList<>();
+        List<Menu> subButton = new ArrayList<>();
+        //二级菜单
         Menu subMenu = new Menu();
         subMenu.setType("view");
         subMenu.setName("搜索");
         subMenu.setUrl("http://www.soso.com/");
-        subMenuList.add(subMenu);
+        subButton.add(subMenu);
         Menu subMenu2 = new Menu();
         subMenu2.setType("miniprogram");
         subMenu2.setName("wxa");
         subMenu2.setUrl("http://mp.weixin.qq.com");
         subMenu2.setAppid(appid);
         subMenu2.setPagepath("pages/lunar/index");
-        subMenuList.add(subMenu2);
+        subButton.add(subMenu2);
         Menu subMenu3 = new Menu();
         subMenu3.setType("click");
         subMenu3.setName("赞我们一下");
         subMenu3.setKey("V1001_GOOD");
-        subMenuList.add(subMenu3);
-        
-
-
+        subButton.add(subMenu3);
+        menu2.setSubButton(subButton);
+        button.add(menu2);
 
         data.put("button", button);
 
-
-
-
-
-        restTemplate.postForObject(url, data, WechatError.class);
-        return null;
+        WechatError result = restTemplate.postForObject(url, data, WechatError.class);
+        return result.toString();
     }
 
 }

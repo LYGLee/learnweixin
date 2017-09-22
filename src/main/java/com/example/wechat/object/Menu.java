@@ -1,5 +1,9 @@
 package com.example.wechat.object;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
+
 /**
  * 菜单属性模型
  * Created by liyuan on 2017/9/22
@@ -39,6 +43,13 @@ public class Menu {
      * miniprogram类型必须	小程序的页面路径
      */
     private String pagepath;
+
+    /**
+     * 子菜单
+     */
+    @JsonProperty("sub_button")
+    private List<Menu> subButton;
+
 
     public String getName() {
         return name;
@@ -94,5 +105,13 @@ public class Menu {
 
     public void setPagepath(String pagepath) {
         this.pagepath = pagepath;
+    }
+
+    public List<Menu> getSubButton() {
+        return subButton;
+    }
+
+    public void setSubButton(List<Menu> subButton) {
+        this.subButton = subButton;
     }
 }
